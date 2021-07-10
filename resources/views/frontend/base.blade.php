@@ -117,7 +117,7 @@
         <div class="offcanvas__close">+</div>
         <ul class="offcanvas__widget">
             <li><span class="icon_search search-switch"></span></li>
-            @auth
+            @auth('customers')
                 <li><a href="#">
                         {{ auth('customers')->user()->email }}
                         {{-- <span class="icon_heart_alt"></span> --}}
