@@ -1,6 +1,6 @@
 {
     "name": "dms99s/project",
-    "type": "project",
+    "type": "template",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
