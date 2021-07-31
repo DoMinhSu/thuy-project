@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController;
+use App\Jobs\LogJob;
 use App\Models\Customer;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -38,7 +39,6 @@ Route::prefix('admin')->group(function () {
             Route::post('/update', [CustomerController::class,'update'])->name('update');
             Route::get('/delete/{model}', [CustomerController::class,'delete'])->name('delete');
         });
-        \
         Route::prefix('products')->name('products.')->group(function () {
             Route::get('/', [ProductController::class,'index'])->name('index');
             Route::get('/create', [ProductController::class,'create'])->name('create');
@@ -121,3 +121,7 @@ Route::post('order', function () {
 Route::get('/',[FrontendController::class,'home'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/testQueueAndSupervisor',function()
+{
+    LogJob::dispatch()->onConnection('redis')->onQueue('podcasts');
+});
